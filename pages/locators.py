@@ -18,3 +18,4 @@ class ProductPageLocators():
     ITEM_PRICE_IN_PAGE = (By.CSS_SELECTOR, ".col-sm-6.product_main  > .price_color")
     ITEM_PRICE_IN_BASKET = (
         By.CSS_SELECTOR, ".alert.alert-safe.alert-noicon.alert-info.fade.in > .alertinner  > p > strong")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".alert.alert-safe.alert-noicon.alert-success.fade.in > .alertinner")
