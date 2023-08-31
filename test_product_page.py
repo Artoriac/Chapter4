@@ -1,4 +1,5 @@
 from pages.product_page import ProductPage
+from pages.basket_page import BasketPage
 import sys
 import pytest
 
