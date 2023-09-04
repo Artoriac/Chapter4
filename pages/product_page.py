@@ -5,7 +5,6 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import math
-import time
 
 
 class ProductPage(BasePage):
@@ -32,13 +31,17 @@ class ProductPage(BasePage):
 
     def should_be_item_added_to_basket(self):
         item_in_page = self.browser.find_element(*ProductPageLocators.ITEM_NAME_IN_PAGE)
+        item_in_page = item_in_page.text
         item_after_added_in_basket = self.browser.find_element(*ProductPageLocators.ITEM_NAME_AFTER_ADDED)
+        item_after_added_in_basket = item_after_added_in_basket.text
         assert item_in_page == item_after_added_in_basket, "Товар не добавлен в корзину или название товара не совпадает"
 
     def should_be_the_same_price(self):
-        Item_price_in_page = self.browser.find_element(*ProductPageLocators.ITEM_PRICE_IN_PAGE)
-        Item_price_in_basket = self.browser.find_element(*ProductPageLocators.ITEM_PRICE_IN_BASKET)
-        assert Item_price_in_page == Item_price_in_basket, "Цена товара не совпадает с ценой в корзине"
+        item_price_in_page = self.browser.find_element(*ProductPageLocators.ITEM_PRICE_IN_PAGE)
+        item_price_in_page = item_price_in_page.text
+        item_price_in_basket = self.browser.find_element(*ProductPageLocators.ITEM_PRICE_IN_BASKET)
+        item_price_in_basket = item_price_in_basket.text
+        assert item_price_in_page == item_price_in_basket, "Цена товара не совпадает с ценой в корзине"
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(
@@ -47,4 +50,3 @@ class ProductPage(BasePage):
     def should_be_success_message_disappeared(self):
         assert self.is_disappeared(
             *ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
-
