@@ -52,27 +52,3 @@ def test_gust_cant_see_product_in_basket_opened_from_main_page(browser):
     basket_page.should_be_empty_basket_without_items()
     basket_page.should_be_empty_basket_check_with_text()
 
-# @pytest.mark.login - Работа с API выходит за рамки этого курса
-# class TestLoginFromProductPage():
-#     @pytest.fixture(scope="function", autouse=True)
-#     def setup(self):
-#         self.product = ProductFactory(title="Best book created by robot")
-#         # Создаем по API
-#         self.link = self.product.link
-#         yield
-#     # После этого ключевого слова начинается teardown
-#     # выполняется после каждого теста
-#     # удаляем те данные, которые мы создали
-#         self.product.delete()
-#
-#     def test_guest_can_go_to_login_page_from_product_page(self, browser):
-#         page = ProductPage(browser, self.link)
-#         page.open()
-#         page.go_to_login_page()
-#         page.go_to_basket_page()
-#         page.go_to_login_page()
-#
-#     def test_guest_should_see_login_link(self, browser):
-#         page = ProductPage(browser, self.link)
-#         page.open()
-#         page.should_be_login_link()
